@@ -10,7 +10,13 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 app.use(cors());
 app.use(express.json());
 
+
+app.get("/ping", (req, res) => {
+    res.send("pong!");
+  });  
+
 app.post("/api/itinerary", async (req, res) => {
+    console.log("Recieved request:", req.body);
     const { destination, links, days, notes } = req.body;
   
     if (!destination || !links || !Array.isArray(links) || links.length === 0) {
