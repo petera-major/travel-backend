@@ -10,6 +10,10 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send("Travel backend is live!");
+  });
+
 
 app.get("/ping", (req, res) => {
     res.send("pong!");
